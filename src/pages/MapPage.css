@@ -1,0 +1,78 @@
+.map-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ── Navbar ── */
+.map-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  height: 56px;
+  background: #1a1a2e;
+  color: #fff;
+  flex-shrink: 0;
+  z-index: 100;
+}
+
+.map-navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.map-navbar-brand span {
+  font-size: 22px;
+}
+
+.map-navbar-user {
+  font-size: 13px;
+  color: #aab4c8;
+}
+
+.btn-logout {
+  background: none;
+  border: 1.5px solid #aab4c8;
+  color: #aab4c8;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-left: 12px;
+}
+
+.btn-logout:hover {
+  border-color: #e94560;
+  color: #e94560;
+}
+
+/* ── Contenido principal ── */
+.map-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ── Responsive móvil ── */
+@media (max-width: 600px) {
+  .map-navbar {
+    padding: 0 12px;
+    height: 50px;
+  }
+
+  .map-navbar-brand {
+    font-size: 16px;
+  }
+
+  .map-navbar-user {
+    display: none;
+  }
+}
