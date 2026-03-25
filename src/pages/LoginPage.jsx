@@ -2,51 +2,41 @@ import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { login } from '../api/stations';
 import './LoginPage.css';
+import logo from "../assets/logo.png";
 
 function LoginPage() {
   const navigate              = useNavigate();
   const [form, setForm]       = useState({ email: '', password: '' });
   const [error, setError]     = useState('');
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  // En LoginPage.jsx — reemplaza el handleSubmit
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  setError('');
-  setLoading(true);
-  try {
-    const res = await login(form.email, form.password);
-    localStorage.setItem('token', res.data.token);
-
-    // Decodifica el token para saber el rol
-    const payload = JSON.parse(atob(res.data.token.split('.')[1]));
-    const isOperator = payload.authorities?.some(
-      a => a.authority === 'ROLE_OPERATOR'
-    );
-
-    navigate(isOperator ? '/operator' : '/map');
-  } catch {
-    setError('Correo o contraseña incorrectos');
-  } finally {
-    setLoading(false);
-  }
-};
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+    setLoading(true);
+    try {
+      const res = await login(form.email, form.password);
+      localStorage.setItem('token', res.data.token);
+      navigate('/map');
+    } catch {
+      setError('Correo o contraseña incorrectos');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="login-container">
-      <div className="logo-watermark">
-        <div className="logo-icon">⛽</div>
-        <span className="logo-text">AhorraTank</span>
-      </div>
-      
       <div className="login-card">
 
         <div className="login-header">
-          <h1 className="login-title">Inicia Sesión</h1>
+          <img src={logo} className="login-logo-img" alt="logo" />
+          <h1 className="login-title">Ahorra Tank</h1>
           <p className="login-subtitle">Encuentra combustible al mejor precio</p>
         </div>
 
@@ -65,17 +55,27 @@ const handleSubmit = async (e) => {
             />
           </div>
 
-          <div className="form-field">
-            <label htmlFor="password">Contraseña</label>
-            <input
-              id="password"
-              type="password"
-              name="password"
-              value={form.password}
-              onChange={handleChange}
-              placeholder="••••••••"
-              required
-            />
+          <div className="form-field password-field">
+            <label>Contraseña</label>
+
+            <div className="password-input-container">
+              <input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                value={form.password}
+                onChange={handleChange}
+                placeholder="••••••••"
+                required
+              />
+
+              <button
+                type="button"
+                className="toggle-password"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? "Ocultar" : "Ver"}
+              </button>
+            </div>
           </div>
 
           {error && <p className="error-message">{error}</p>}
