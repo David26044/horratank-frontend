@@ -18,6 +18,17 @@ If you are developing a production application, we recommend using TypeScript wi
 
 Aplicación web para consultar y comparar precios de combustible en estaciones de servicio de Bogotá.
 
+## Integrantes
+
+| Nombre                  |
+|-------------------------|
+| Gabriela Rodriguez      |
+| Lesly Parra             |
+| Andres Monroy           |
+| Juan David Cardenas     |
+| David Carreño Parra     |
+| Nicolas Diaz Cruz       |
+
 > ⚠️ Proyecto en desarrollo — la estructura y componentes pueden cambiar.
 
 ## Tecnologías
