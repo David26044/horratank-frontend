@@ -13,20 +13,28 @@ function LoginPage() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError('');
-    setLoading(true);
-    try {
-      const res = await login(form.email, form.password);
-      localStorage.setItem('token', res.data.token);
-      navigate('/map');
-    } catch {
-      setError('Correo o contraseña incorrectos');
-    } finally {
-      setLoading(false);
-    }
-  };
+  // En LoginPage.jsx — reemplaza el handleSubmit
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setError('');
+  setLoading(true);
+  try {
+    const res = await login(form.email, form.password);
+    localStorage.setItem('token', res.data.token);
+
+    // Decodifica el token para saber el rol
+    const payload = JSON.parse(atob(res.data.token.split('.')[1]));
+    const isOperator = payload.authorities?.some(
+      a => a.authority === 'ROLE_OPERATOR'
+    );
+
+    navigate(isOperator ? '/operator' : '/map');
+  } catch {
+    setError('Correo o contraseña incorrectos');
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <div className="login-container">

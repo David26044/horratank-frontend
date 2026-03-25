@@ -40,3 +40,15 @@ export const getRouteUrl = (id, originLat, originLng) => {
 export const getZones = () => {
   return api.get('/stations/zones');
 };
+
+export const registerEntry = (data) => {
+  return api.post('/inventory/entry', data);
+};
+
+export const getInventory = () => {
+  return api.get('/inventory');
+};
+
+export const getInventoryLog = () => {
+  return api.get('/inventory/log');
+};
