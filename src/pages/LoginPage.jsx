@@ -30,11 +30,15 @@ function LoginPage() {
 
   return (
     <div className="login-container">
+      <div className="logo-watermark">
+        <div className="logo-icon">⛽</div>
+        <span className="logo-text">AhorraTank</span>
+      </div>
+      
       <div className="login-card">
 
         <div className="login-header">
-          <div className="login-logo">⛽</div>
-          <h1 className="login-title">Ahorra Tank</h1>
+          <h1 className="login-title">Inicia Sesión</h1>
           <p className="login-subtitle">Encuentra combustible al mejor precio</p>
         </div>
 
