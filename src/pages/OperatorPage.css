@@ -1,0 +1,247 @@
+.operator-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--color-bg);
+}
+
+/* ── Navbar ── */
+.operator-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  height: 56px;
+  background: #1a1a2e;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.operator-navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.operator-navbar-brand span {
+  font-size: 22px;
+}
+
+.operator-navbar-role {
+  font-size: 12px;
+  background: var(--color-accent);
+  color: #fff;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-weight: 600;
+  margin-left: 10px;
+}
+
+.btn-logout {
+  background: none;
+  border: 1.5px solid #aab4c8;
+  color: #aab4c8;
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-logout:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+/* ── Contenido ── */
+.operator-content {
+  flex: 1;
+  padding: 32px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.operator-content h1 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 6px;
+}
+
+.operator-content p {
+  font-size: 14px;
+  color: var(--color-text-soft);
+  margin-bottom: 32px;
+}
+
+/* ── Grid principal ── */
+.operator-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+/* ── Inventario actual ── */
+.inventory-panel {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-md);
+}
+
+.inventory-panel-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1.5px solid var(--color-border);
+}
+
+.inventory-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.inventory-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-radius: var(--radius-md);
+  background: #f4f6f8;
+  border-left: 4px solid transparent;
+}
+
+.inventory-item.DISPONIBLE { border-left-color: #27ae60; }
+.inventory-item.BAJO       { border-left-color: #f39c12; }
+.inventory-item.SIN\ STOCK { border-left-color: var(--color-accent); }
+
+.inventory-item-fuel {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.inventory-item-qty {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--color-primary);
+}
+
+.inventory-item-status {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.inventory-item-status.DISPONIBLE {
+  background: #e8f8f0;
+  color: #27ae60;
+}
+
+.inventory-item-status.BAJO {
+  background: #fef9e7;
+  color: #f39c12;
+}
+
+.inventory-item-status.SIN\ STOCK {
+  background: #fff0f3;
+  color: var(--color-accent);
+}
+
+.inventory-empty {
+  text-align: center;
+  color: var(--color-text-soft);
+  font-size: 14px;
+  padding: 24px 0;
+}
+
+.inventory-loading {
+  text-align: center;
+  color: var(--color-text-soft);
+  font-size: 14px;
+  padding: 24px 0;
+}
+
+/* ── Log / bitácora ── */
+.log-panel {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-md);
+  grid-column: 1 / -1;
+}
+
+.log-panel-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1.5px solid var(--color-border);
+}
+
+.log-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.log-table th {
+  text-align: left;
+  padding: 10px 14px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--color-text-soft);
+  border-bottom: 1.5px solid var(--color-border);
+}
+
+.log-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #f0f0f0;
+  color: var(--color-text);
+}
+
+.log-table tr:last-child td {
+  border-bottom: none;
+}
+
+.log-table tr:hover td {
+  background: #f9f9f9;
+}
+
+.log-empty {
+  text-align: center;
+  color: var(--color-text-soft);
+  font-size: 14px;
+  padding: 24px 0;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .operator-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .log-panel {
+    grid-column: 1;
+    overflow-x: auto;
+  }
+
+  .operator-content {
+    padding: 20px 12px;
+  }
+
+  .operator-navbar {
+    padding: 0 12px;
+  }
+}
